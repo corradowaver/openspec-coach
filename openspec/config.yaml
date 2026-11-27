@@ -1,32 +1,34 @@
-schema: spec-driven
+context: |
+  Tech stack: TypeScript, Node.js (≥22.20.0), ESM modules
+  Package manager: pnpm
+  CLI framework: Commander.js
 
-# Project context (optional)
-# Add only constraints that should guide OpenSpec artifacts and workflows.
-# Include constraints an agent cannot infer by reading the code.
-# Keep general project documentation and discoverable codebase facts out.
-# Example:
-#   context: |
-#     Designs and tasks must cover Windows, macOS, and Linux
-#     Write all artifacts in Spanish
+  Product language:
+  - Write OpenSpec proposals and specs in user-facing product behavior language
+  - Requirements should describe the experience, observable behavior, and product contract
+  - Avoid implementation-negative SHALL statements when a positive user outcome can express the same rule
+  - Put internal mechanisms in design.md or tasks.md unless the mechanism is itself part of the user-facing contract
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always state what is out of scope
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+  Cross-platform requirements:
+  - This tool runs on macOS, Linux, AND Windows
+  - Always use path.join() or path.resolve() for file paths - never hardcode slashes
+  - Never assume forward-slash path separators
+  - Tests must use path.join() for expected path values, not hardcoded strings
+  - Consider case sensitivity differences in file systems
 
-# Per-operation guidance (optional)
-# Add advisory guidance for how apply and archive work should be conducted.
-# This is separate from artifact rules above.
-# Example:
-#   operations:
-#     apply:
-#       guidance:
-#         - Keep test summaries concise
-#     archive:
-#       guidance:
-#         - Summarize the archive outcome before finishing
+rules:
+  specs:
+    - Include scenarios for Windows path handling when dealing with file paths
+    - Requirements involving paths must specify cross-platform behavior
+    - Prefer user-facing product behavior and observable outcomes over internal implementation mechanics
+    - Include HOW details only when the mechanism is part of the product contract
+    - If we generate artifacts, specify deletion/modification by explicit list lookup, not pattern matching
+  tasks:
+    - Add Windows CI verification as a task when changes involve file paths
+    - Include cross-platform testing considerations
+  design:
+    - Document any platform-specific behavior or limitations
+    - Prefer Node.js path module over string manipulation for paths
+    - Use existing constants and lists - don't invent detection mechanisms
+    - Prefer explicit lookups over pattern matching or regex
+    - If we generate it, we track it by name in a constant
