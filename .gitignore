@@ -1,0 +1,41 @@
+# Local Obsidian workspace and settings
+/.obsidian/
+
+# Operating system and editor temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# Local environment variables; keep documented examples versioned
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Dependencies and Python tooling caches
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Generated output and temporary QA artifacts
+/dist/
+/coverage/
+/.nyc_output/
+/test-results/
+/playwright-report/
+/.cache/
+/tmp/
+/temp/
+*.log
+
+# Keep OpenSpec config, specs, changes (including archives), skills,
+# AGENTS.md, decision logs, and dependency lockfiles versioned.
