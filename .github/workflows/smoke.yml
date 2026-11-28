@@ -16,6 +16,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: npm install --global @fission-ai/openspec@2.2.0
+      - name: Install OpenSpec
+        id: openspec-setup
+        run: npm install --global @fission-ai/openspec@2.2.0
       - run: ./tests/smoke.ps1
         shell: pwsh
+      - name: Validate OpenSpec specs and active changes
+        if: ${{ !cancelled() && matrix.os == 'ubuntu-latest' && steps.openspec-setup.outcome == 'success' }}
+        run: openspec validate --all --strict --no-interactive
+      - name: Validate archived OpenSpec tasks
+        if: ${{ !cancelled() && matrix.os == 'ubuntu-latest' && steps.openspec-setup.outcome == 'success' }}
+        run: openspec validate --archived

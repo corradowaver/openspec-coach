@@ -14,5 +14,7 @@
 
 ## 3. End-to-end acceptance
 
-- [ ] 3.1 Follow the guidance from idea to archive in a disposable project. Record which commands the user invoked and confirm Coach itself produced only guidance.
-- [ ] 3.2 Exercise installation and context resolution in Windows CI with a workspace path containing spaces. Check that documented commands and path handling also work with macOS and Linux conventions.
+- [x] 3.1 Follow the guidance from idea to archive in a disposable project. Record which commands the user invoked and confirm Coach itself produced only guidance.
+
+  Acceptance evidence (2026-11-28, OpenSpec 2.2.0): In a disposable project, the installed Coach recommended the proposal and apply skills, then `openspec archive add-csv-export`. The test driver ran `openspec init --tools codex --no-animation` and `openspec new change add-csv-export`, prepared and implemented the small fixture, then ran `openspec validate --all --strict --no-interactive`, `openspec archive add-csv-export --yes`, and `openspec validate --archived`. The main spec was created and the archived task passed validation. The driver supplied actual read-only CLI results because the separate Codex session could not launch a shell. Workspace file hashes were unchanged during each Coach turn, and Coach issued guidance only.
+- [x] 3.2 Exercise installation and context resolution in Windows CI with a workspace path containing spaces. Check that documented commands and path handling also work with macOS and Linux conventions. [CI evidence: smoke passed on Windows, macOS, and Linux](https://github.com/corradowaver/openspec-coach/actions/runs/46134375327).
