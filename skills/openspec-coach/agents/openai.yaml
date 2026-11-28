@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenSpec Coach"
+  short_description: "Find and understand your next OpenSpec step"
+  default_prompt: "Use $openspec-coach to tell me what to do next in this project."
