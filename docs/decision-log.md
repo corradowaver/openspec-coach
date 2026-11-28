@@ -18,4 +18,4 @@
 - Decision: Run strict OpenSpec validation and the separate archive task check on the Linux matrix job using its pinned CLI. Resolve the archive baseline before enabling the checks.
 - Rationale: The built-in checks cover document structure and archived task completion. One runner is sufficient for these repository checks.
 - Consequences: OpenSpec warnings and incomplete archived tasks will fail CI. The existing smoke matrix continues to cover platform behavior.
-- OpenSpec change: [add-openspec-ci-validation](../openspec/changes/add-openspec-ci-validation/proposal.md)
+- OpenSpec change: [add-openspec-ci-validation](../openspec/changes/archive/2026-11-28-add-openspec-ci-validation/proposal.md)
